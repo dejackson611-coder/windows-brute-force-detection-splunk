@@ -65,3 +65,8 @@ index=main sourcetype="WinEventLog:Security" (EventCode=4625 OR EventCode=4624)
 | stats sum(Failed) AS Failed_Attempts sum(Successful) AS Successful_Logins earliest(_time) AS First_Event latest(_time) AS Last_Event by Account_Name
 | convert ctime(First_Event) ctime(Last_Event)
 | table Account_Name Failed_Attempts Successful_Logins First_Event Last_Event
+```
+
+### Detection Results
+
+![Splunk detection results showing 23 failed login attempts and 2 successful logins](screenshots/Final%20Detection%20%E2%80%94%2023%20Failed%20Attempts%20%2B%202%20Successful%20Logins.jpeg)
